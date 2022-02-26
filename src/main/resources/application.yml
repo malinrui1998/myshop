@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+  freemarker:
+    check-template-location: false
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/myshop?useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.jdbc.Driver
+  application:
+    name: myshop
+mybatis:
+  mapper-locations: classpath:mybatis/*.xml
+  type-aliases-package: com.mlr.myshop.pojo
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
