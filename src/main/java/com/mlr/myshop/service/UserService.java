@@ -12,6 +12,10 @@ public interface UserService {
 
     List<User> getAllUserList(HashMap map);
 
+    List<User> getUserListById(Integer id);
+
+    List<User> getUserListByName(String name);
+
     Integer getUserListCount();
 
     Integer insertUser(User user);

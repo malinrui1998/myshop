@@ -9,6 +9,18 @@
         limit #{pageStart},#{pageSize}
     </select>
 
+    <select id="getUserListById" resultType="User">
+        select *
+        from user
+        where user_id = #{user_id}
+    </select>
+
+    <select id="getUserListByName" resultType="User">
+        select *
+        from user
+        where loginName = #{name}
+    </select>
+
     <!--用户总数-->
     <select id="getUserListCount" resultType="Integer">
         select count(*)
@@ -38,6 +50,7 @@
             </foreach>
         </where>
     </select>
+
 
     <!--更新用户-->
     <update id="updateUser">

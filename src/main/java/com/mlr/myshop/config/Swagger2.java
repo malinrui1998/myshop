@@ -9,7 +9,12 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
-
+/**
+ * springboot Swagger2
+ *
+ * @author hqc
+ * @Date 2019年3月20日
+ */
 @Configuration
 public class Swagger2 {
     @Bean

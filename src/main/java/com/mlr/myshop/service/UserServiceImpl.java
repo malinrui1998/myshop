@@ -2,16 +2,16 @@ package com.mlr.myshop.service;
 
 import com.mlr.myshop.mapper.UserMapper;
 import com.mlr.myshop.pojo.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
-    UserMapper userMapper;
+    @Resource
+    private UserMapper userMapper;
 
     @Override
     public User login(User user) {
@@ -21,6 +21,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAllUserList(HashMap map) {
         return userMapper.getAllUserList(map);
+    }
+
+    @Override
+    public List<User> getUserListById(Integer id) {
+        return userMapper.getUserListById(id);
+    }
+
+    @Override
+    public List<User> getUserListByName(String name) {
+        return userMapper.getUserListByName(name);
     }
 
     @Override

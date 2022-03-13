@@ -6,6 +6,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+
+/**
+ * springboot解决跨域问题
+ */
 @Configuration
 public class CorsConfig {
     private CorsConfiguration buildConfig() {

@@ -2,19 +2,20 @@ package com.mlr.myshop.controller;
 
 import com.mlr.myshop.pojo.User;
 import com.mlr.myshop.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.awt.print.Book;
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
 public class UserController {
-    @Autowired
-    UserService userService;
+    @Resource
+    private UserService userService;
 
     Map<String, Object> map = new HashMap<>();
 
@@ -51,11 +52,28 @@ public class UserController {
         return remap;
     }
 
+    @PostMapping("/getUserListById")
+    public Map<String, Object> getUserListById(Integer id) {
+        List<User> user = userService.getUserListById(id);
+        if (user != null) {
+            map.put("data", user);
+        }
+        return map;
+    }
+
+    @PostMapping("/getUserListByName")
+    public Map<String, Object> getUserListByName(String name) {
+        List<User> user = userService.getUserListByName(name);
+        if (user != null) {
+            map.put("data", user);
+        }
+        return map;
+    }
+
     @PostMapping("/getUserListCount")
     public Map<String, Object> getUserListCount() {
         Integer count = userService.getUserListCount();
         if (count != null) {
-            map.put("code", 200);
             map.put("data", count);
         }
         return map;
