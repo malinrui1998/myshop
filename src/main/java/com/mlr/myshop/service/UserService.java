@@ -8,7 +8,8 @@ import java.util.List;
 
 public interface UserService {
 
-    User login(User user);
+//    User login(User user);
+    User login(String username, String password);
 
     List<User> getAllUserList(HashMap map);
 

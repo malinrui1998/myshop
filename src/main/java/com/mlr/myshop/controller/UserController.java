@@ -19,11 +19,11 @@ public class UserController {
 
     Map<String, Object> map = new HashMap<>();
 
-    //用户登录
+//用户登录
     @PostMapping("/login")
-    public Map<String, Object> login(User user) {
-        User username = userService.login(user);
-        if (username != null) {
+    public Map<String, Object> login(String user_name, String password) {
+        User user = userService.login(user_name, password);
+        if (user != null) {
             map.put("code", 200);
             map.put("message", "登陆成功");
         } else {
