@@ -21,9 +21,9 @@ public interface UserService {
 
     Integer insertUser(User user);
 
-    int deleteUserById(Integer id);
+    Integer deleteUserById(Integer id);
 
-//    int deleteUserAllId(int[] ids);
+//    Integer deleteUserAllId(int[] ids);
 
-    int updateUser(User user);
+    Integer updateUser(User user);
 }

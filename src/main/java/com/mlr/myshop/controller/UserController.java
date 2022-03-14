@@ -17,11 +17,10 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    Map<String, Object> map = new HashMap<>();
-
-//用户登录
+    //用户登录
     @PostMapping("/login")
     public Map<String, Object> login(String user_name, String password) {
+        Map<String, Object> map = new HashMap<>();
         User user = userService.login(user_name, password);
         if (user != null) {
             map.put("code", 200);
@@ -54,6 +53,7 @@ public class UserController {
 
     @PostMapping("/getUserListById")
     public Map<String, Object> getUserListById(Integer id) {
+        Map<String, Object> map = new HashMap<>();
         List<User> user = userService.getUserListById(id);
         if (user != null) {
             map.put("data", user);
@@ -63,6 +63,7 @@ public class UserController {
 
     @PostMapping("/getUserListByName")
     public Map<String, Object> getUserListByName(String name) {
+        Map<String, Object> map = new HashMap<>();
         List<User> user = userService.getUserListByName(name);
         if (user != null) {
             map.put("data", user);
@@ -72,6 +73,7 @@ public class UserController {
 
     @PostMapping("/getUserListCount")
     public Map<String, Object> getUserListCount() {
+        Map<String, Object> map = new HashMap<>();
         Integer count = userService.getUserListCount();
         if (count != null) {
             map.put("data", count);
@@ -82,6 +84,7 @@ public class UserController {
     //增加新用户
     @PostMapping("/insertUser")
     public Map<String, Object> insertUser(User user) {
+        Map<String, Object> map = new HashMap<>();
         Integer insertUser = userService.insertUser(user);
         if (insertUser != null) {
             map.put("code", 200);
@@ -93,6 +96,7 @@ public class UserController {
     //按ID删除用户
     @PostMapping("/deleteUserById")
     public Map<String, Object> deleteUserById(Integer id) {
+        Map<String, Object> map = new HashMap<>();
         Integer deleteUserById = userService.deleteUserById(id);
         if (deleteUserById != 0) {
             map.put("code", 200);
@@ -107,22 +111,22 @@ public class UserController {
     //批量删除用户
 //    @PostMapping("/deleteUserAllId")
 //    public Map<String, Object> deleteUserAllId(int[] ids) {
-//        int deleteUserAllId = userService.deleteUserAllId(ids);
+//        Integer deleteUserAllId = userService.deleteUserAllId(ids);
 //        if (deleteUserAllId != 0) {
 //            map.put("code", 200);
-//            map.put("message", "更新成功");
+//            map.put("message", "删除成功");
 //        } else {
 //            map.put("code", 0);
-//            map.put("message", "更新失败");
+//            map.put("message", "删除失败");
 //        }
 //        return map;
-
 //    }
 
     //更新用户
     @PostMapping("/updateUser")
     public Map<String, Object> updateUser(User user) {
-        int updateUser = userService.updateUser(user);
+        Map<String, Object> map = new HashMap<>();
+        Integer updateUser = userService.updateUser(user);
         if (updateUser != 0) {
             map.put("code", 200);
             map.put("message", "更新成功");
