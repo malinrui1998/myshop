@@ -14,9 +14,6 @@ import java.util.List;
 @Repository
 public interface UserMapper {
 
-//    @Select("select * from user where user_name=#{user_name} and password=#{password}")
-//    User login(User user);
-
     @Select("select * from user where user_name=#{user_name} and password=#{password}")
     User login(String user_name, String password);
 
@@ -32,7 +29,7 @@ public interface UserMapper {
 
     Integer deleteUserById(Integer id);
 
-//    Integer deleteUserAllId(int[] ids);
+    Integer deleteUserAllId(int[] ids);
 
     Integer updateUser(User user);
 

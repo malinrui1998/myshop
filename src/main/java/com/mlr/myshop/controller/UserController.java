@@ -2,8 +2,6 @@ package com.mlr.myshop.controller;
 
 import com.mlr.myshop.pojo.User;
 import com.mlr.myshop.service.UserService;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +16,7 @@ public class UserController {
     private UserService userService;
 
     //用户登录
+    // 可用在方法名上
     @PostMapping("/login")
     public Map<String, Object> login(String user_name, String password) {
         Map<String, Object> map = new HashMap<>();
@@ -36,19 +35,18 @@ public class UserController {
     @PostMapping("/getAllUserList")
     public Map<String, Object> getAllUserList(int currentPage, int pageSize) {
         HashMap map = new HashMap();
-        Map<String, Object> remap = new HashMap<>();
         int pageStart = (currentPage - 1) * pageSize;
         map.put("pageStart", pageStart);
         map.put("pageSize", pageSize);
         List<User> user = userService.getAllUserList(map);
         if (user != null) {
-            remap.put("code", 200);
-            remap.put("data", user);
+            map.put("code", 200);
+            map.put("data", user);
         } else {
-            remap.put("code", 0);
-            remap.put("message", "请登录");
+            map.put("code", 0);
+            map.put("message", "请登录");
         }
-        return remap;
+        return map;
     }
 
     @PostMapping("/getUserListById")
@@ -109,18 +107,19 @@ public class UserController {
     }
 
     //批量删除用户
-//    @PostMapping("/deleteUserAllId")
-//    public Map<String, Object> deleteUserAllId(int[] ids) {
-//        Integer deleteUserAllId = userService.deleteUserAllId(ids);
-//        if (deleteUserAllId != 0) {
-//            map.put("code", 200);
-//            map.put("message", "删除成功");
-//        } else {
-//            map.put("code", 0);
-//            map.put("message", "删除失败");
-//        }
-//        return map;
-//    }
+    @PostMapping("/deleteUserAllId")
+    public Map<String, Object> deleteUserAllId(int[] ids) {
+        Map<String, Object> map = new HashMap<>();
+        Integer deleteUserAllId = userService.deleteUserAllId(ids);
+        if (deleteUserAllId != 0) {
+            map.put("code", 200);
+            map.put("message", "删除成功");
+        } else {
+            map.put("code", 0);
+            map.put("message", "删除失败");
+        }
+        return map;
+    }
 
     //更新用户
     @PostMapping("/updateUser")

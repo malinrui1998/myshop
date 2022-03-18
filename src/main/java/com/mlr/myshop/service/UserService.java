@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface UserService {
 
-//    User login(User user);
     User login(String username, String password);
 
     List<User> getAllUserList(HashMap map);
@@ -23,7 +22,7 @@ public interface UserService {
 
     Integer deleteUserById(Integer id);
 
-//    Integer deleteUserAllId(int[] ids);
+    Integer deleteUserAllId(int[] ids);
 
     Integer updateUser(User user);
 }

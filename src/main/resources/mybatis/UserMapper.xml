@@ -9,13 +9,13 @@
         limit #{pageStart},#{pageSize}
     </select>
 
-    <select id="getUserListById" resultType="User">
+    <select id="getUserListById" resultType="user">
         select *
         from user
         where user_id = #{user_id}
     </select>
 
-    <select id="getUserListByName" resultType="User">
+    <select id="getUserListByName" resultType="user">
         select *
         from user
         where loginName = #{name}
@@ -41,15 +41,15 @@
     </delete>
 
     <!--批量删除-->
-    <select id="deleteUserAllId">
-        select * from user
+    <delete id="deleteUserAllId">
+        delete from user
         <where>
-            id in
-            <foreach collection="user" item="id" separator="，" open="(" close=")">
+            user_id in
+            <foreach collection="array" item="user_id" separator="," open="(" close=")">
                 #{user_id}
             </foreach>
         </where>
-    </select>
+    </delete>
 
 
     <!--更新用户-->

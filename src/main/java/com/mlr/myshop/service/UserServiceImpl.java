@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User login(String username, String password) {
-        return userMapper.login(username,password);
+        return userMapper.login(username, password);
     }
 
     @Override
@@ -53,10 +53,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.deleteUserById(id);
     }
 
-//    @Override
-//    public Integer deleteUserAllId(int[] ids) {
-//        return userMapper.deleteUserAllId(ids);
-//    }
+    @Override
+    public Integer deleteUserAllId(int[] ids) {
+        return userMapper.deleteUserAllId(ids);
+    }
+
 
     @Override
     public Integer updateUser(User user) {
